@@ -8,6 +8,7 @@ def list_reduction(char, pos, dict):
     dict2 = [x for x in dict1 if  x[pos]==char]
     return dict2
 
+
 def list_removal_yellow(char, pos, dict):
 
     dict1 = dict[:]
@@ -15,13 +16,12 @@ def list_removal_yellow(char, pos, dict):
     return dict2
 
 def list_reduction_yellow(char, pos, dict):
-
     dict1 = dict[:]
     dict2 = [x for x in dict1 if char in x]
     return dict2
 
 def check_input(word):
-    '''checks if all elements in list 1 is in list 2'''
+
     if word.isalpha() == True:
         if len(word) == 5:
             return True
@@ -34,6 +34,7 @@ def check_input(word):
 
 
 def remove_element_from_dict(char,dict):
+
     dict1 = dict[:]
     dict2 = [x for x in dict1 if char not in x]
     return dict2
@@ -55,8 +56,8 @@ iter = 0
 
 
 alphabet_filter = [x for x in content if  x.isalpha()]
-length_filter = [x for x in alphabet_filter if  len(x)==5]
-final_filter = [x for x in length_filter if  len(set(x)) == len(x)]
+word_list = [x for x in alphabet_filter if  len(x)==5]
+#word_list = [x for x in length_filter if  len(set(x)) == len(x)]
 
 while True and iter<7:
     if iter == 0:
@@ -67,7 +68,7 @@ while True and iter<7:
             black = input_format(input("Enter position of the black characters: "))
             if black != '':
                 for i in black:
-                    word_list = remove_element_from_dict(first_word[i-1],final_filter)
+                    word_list = remove_element_from_dict(first_word[i-1],word_list)
             if green != '':
                 for i in green:
                     word_list = list_reduction(first_word[i-1], i-1,word_list)
@@ -82,6 +83,9 @@ while True and iter<7:
 
 
             print(word_list)
+
+            print("One possible random choice is: \n")
+            print(random.choice(word_list))
         else:
              check_input(first_word)
     else:
@@ -106,5 +110,7 @@ while True and iter<7:
             print("The possible words currently are: \n")
             print(word_list)
 
+            print("One possible random choice is: \n")
+            print(random.choice(word_list))
 
 
